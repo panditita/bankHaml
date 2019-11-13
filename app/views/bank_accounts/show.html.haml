@@ -2,3 +2,53 @@
     Account Number: #{@bank_account.account_number}
     %small
         #{@bank_account.client}
+
+= button_tag :new_transaction, id: "btn-new-transaction", class: "btn btn-primary" do
+    New Transaction
+
+%table.table.table-bordered
+    %thead
+        %tr
+            %th Date of Transaction
+            %th Transaction Type
+            %th Amount
+        %tbody
+            - @bank_account.account_transactions.each do | transaction |
+                %tr
+                    %td #{transaction.created_at}
+                    %td #{transaction.transaction_type}
+                    %td #{number_to_currency(transaction.amount, unit: "GBP ")}
+        %tr
+            %th
+            %th Balance
+            %th #{number_to_currency(@bank_account.balance, unit: "GBP ")}
+
+#parameters{ data: { bank_account_id: @bank_account.id } }
+
+#modal-transaction.modal.hide.fade.modal-fade 
+    .modal-dialog
+        .modal-content
+            .modal-header
+                %button.close{type: 'button', data:{dismiss:'modal'}}
+                    %span{aria:{hidden:'true'}}
+                        %i.fa.fa-close
+                    %span.sr-only Close
+                    %h4.modal-title
+                        New Transaction
+            .modal-body 
+                .row
+                    .col-md-12
+                        .notification
+                .row
+                    .col-md-6
+                        %label
+                            Amount
+                        = text_field_tag :amount, 0.00, id: 'input-amount', class: "form-control"
+                    .col-md-6
+                        %label
+                            Transaction Type
+                        = select_tag :transaction_type, options_for_select(AccountTransaction::TRANSACTION_TYPES), id: "select-transaction-type", class: 'form-control'
+            .modal-footer
+                %button.btn-default{type:'button', date:{dismiss:'modal'}} Close
+                %button#btn-save.btn-default{type:'button'} Save
+                                                

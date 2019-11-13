@@ -7,6 +7,7 @@ class Client < ApplicationRecord
     has_many :bank_accounts
 
     before_save :format_name
+    
     def format_name
         self.first_name = self.first_name.upcase
         self.last_name = self.last_name.upcase
@@ -14,9 +15,8 @@ class Client < ApplicationRecord
     end
     
 
-    def to_string
+    def to_s
         "#{last_name}, #{first_name}, #{middle_name}"
-        
     end
     
 end

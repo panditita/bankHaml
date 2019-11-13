@@ -4,9 +4,9 @@ class AccountTransaction < ApplicationRecord
   TRANSACTION_TYPES = ["withdraw", "deposit"]
     
   validates :bank_account, presence: true
-  validates :amount, presence: true, numericality: true,
-  validates :transaction_type, presence: true, inclusion: { in: TRANSACTION_TYPES }
-  validates :transaction_number, presence: true, uniqueness: true
+  validates :amount, numericality: true, presence: true
+  validates :transaction_type, inclusion: { in: TRANSACTION_TYPES }, presence: true
+  validates :transaction_number, uniqueness: true, presence: true
 
 before_validation :load_defaults
 
