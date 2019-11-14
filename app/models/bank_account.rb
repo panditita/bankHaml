@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BankAccount < ApplicationRecord
   belongs_to :client
 
@@ -8,15 +10,12 @@ class BankAccount < ApplicationRecord
   before_validation :load_defaults
 
   has_many :account_transactions
-  
+
   def load_defaults
-    if self.new_record?
-      self.balance = 0.00
-    end
+    self.balance = 0.00 if new_record?
   end
 
   def to_s
     account_number
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Be sure to restart your server when you modify this file.
 
 # Version of your assets, change this if you want to expire all your assets.
@@ -14,6 +16,6 @@ Rails.application.config.assets.version = '1.0'
 
 # config/initializers/assets.rb
 Rails.application.config.assets.paths += [
-    # paths for CSS assets in node_modules directory
-    Rails.root.join('node_modules', 'bootstrap-sass', 'assets', 'stylesheets')
-  ]
+  # paths for CSS assets in node_modules directory
+  Rails.root.join('node_modules', 'bootstrap-sass', 'assets', 'stylesheets')
+]

@@ -1,11 +1,11 @@
-module ApplicationHelper
-    def number_of_accounts
-        BankAccount.count
-    end
+# frozen_string_literal: true
 
-    def number_of_clients
-        Client.count
-    end
-    
-    
+module ApplicationHelper
+  def number_of_accounts
+    BankAccount.count
+  end
+
+  def number_of_clients
+    Client.count
+  end
 end
