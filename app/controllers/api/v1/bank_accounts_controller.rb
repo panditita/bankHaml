@@ -19,7 +19,7 @@ module Api
                         amount: amount,
                         transaction_type: transaction_type,
                         bank_account_id: bank_account_id
-                    ).excecute!
+                    ).execute!
                     render json: {balance: bank_account.balance}
                 end
                 

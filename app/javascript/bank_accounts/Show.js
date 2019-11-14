@@ -67,9 +67,10 @@ let Show = ( () =>  {
                        transaction_type: transaction,
                        bank_account_id: $bankAccountId
                    }, success: () => {
-                       window.location.href = `/bank_accounts/${bankAccountId}`;
+                       window.location.href = `/bank_accounts/${$bankAccountId}`;
                    },
                    error: (response) => {
+                       console.log(response)
                        $notification.html(JSON.parse(response.responseText).errors.join());
                        enableControls();
                    }
