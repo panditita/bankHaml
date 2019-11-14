@@ -1,6 +1,6 @@
 # Bank App
 
-# Simple bank app created with Rails, Haml and Sqlite 3
+Simple bank app created with Rails, Haml and Sqlite 3
 
 This project was develop to learn rails and haml
 
