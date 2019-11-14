@@ -7,6 +7,7 @@ let Show = ( () =>  {
         let $parameters;
         let $bankAccountId;
         let $notification;
+        let $btnClose;
 
         const url = "/api/v1/bank_accounts/new_transaction";
 
@@ -20,6 +21,7 @@ let Show = ( () =>  {
             $parameters = document.getElementById('parameters');
             $bankAccountId = $parameters.dataset.bankAccountId;
             $notification =  $('.notification');
+            $btnClose = document.getElementById('btn-close');
         };
 
         const disableControls = () => {
@@ -67,11 +69,16 @@ let Show = ( () =>  {
                    }, success: () => {
                        window.location.href = `/bank_accounts/${bankAccountId}`;
                    },
-                   error: () => {
+                   error: (response) => {
                        $notification.html(JSON.parse(response.responseText).errors.join());
+                       enableControls();
                    }
                });
             });
+
+            $btnClose.addEventListener('click', () => {
+                $modalTransaction.remove();
+            })
         };
     
         var init = () => {

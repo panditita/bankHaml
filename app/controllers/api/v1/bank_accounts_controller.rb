@@ -1,4 +1,4 @@
-module Api do 
+module Api
     module V1 
         class BankAccountsController < ApplicationController
             def new_transaction
@@ -22,6 +22,7 @@ module Api do
                     ).excecute!
                     render json: {balance: bank_account.balance}
                 end
+                
             end
         end
     end

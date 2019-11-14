@@ -49,6 +49,6 @@
                             Transaction Type
                         = select_tag :transaction_type, options_for_select(AccountTransaction::TRANSACTION_TYPES), id: "select-transaction-type", class: 'form-control'
             .modal-footer
-                %button.btn-default{type:'button', date:{dismiss:'modal'}} Close
+                %button#btn-close.btn-default{type:'button', date:{dismiss:'modal'}} Close
                 %button#btn-save.btn-default{type:'button'} Save
                                                 
